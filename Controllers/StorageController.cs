@@ -22,7 +22,7 @@ namespace AzurBlobStorageAPI.Controllers
         }
 
         [HttpGet]
-        [Route("GetAllBlobs")]
+        [Route("GetUploadedBlogImages")]
         public async Task<IActionResult> GetUploadedBlogImages()
         {
             var response = await _service.GetUploadedBlogImages();
