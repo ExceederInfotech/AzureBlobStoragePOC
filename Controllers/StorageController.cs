@@ -15,17 +15,17 @@ namespace AzurBlobStorageAPI.Controllers
 
         [HttpPost]
         [Route("UploadBlobImage")]
-        public async Task<IActionResult> UploadBlobs(IFormFile file)
+        public async Task<IActionResult> UploadBlogImage(IFormFile file)
         {
-            var response = await _service.UploadFile(file);
+            var response = await _service.UploadBlogImage(file);
             return Ok(response);
         }
 
         [HttpGet]
         [Route("GetAllBlobs")]
-        public async Task<IActionResult> GetAllBlobs()
+        public async Task<IActionResult> GetUploadedBlogImages()
         {
-            var response = await _service.GetUploadedBlobs();
+            var response = await _service.GetUploadedBlogImages();
             return Ok(response);
         }
     }

@@ -7,7 +7,7 @@ namespace AzurBlobStorageAPI.Services
     {
         readonly BlobServiceClient _blobClient;
         readonly BlobContainerClient _containerClient;
-        private readonly string?  azureConnectionString = null;          
+        private readonly string? azureConnectionString = null;
         private readonly string containerName;
         public AzureBlobService(IConfiguration configuration)
         {
@@ -16,8 +16,7 @@ namespace AzurBlobStorageAPI.Services
             containerName = "blogimages";
             _containerClient = _blobClient.GetBlobContainerClient(containerName);
         }
-
-        public async Task<List<Azure.Response<BlobContentInfo>>> UploadFile(IFormFile file)
+        public async Task<List<Azure.Response<BlobContentInfo>>> UploadBlogImage(IFormFile file)
         {
             var azureResponse = new List<Azure.Response<BlobContentInfo>>();
             string fileName = file.FileName;
@@ -32,10 +31,9 @@ namespace AzurBlobStorageAPI.Services
             }
             return azureResponse;
         }
-
-        public async Task<List<BlobDto>> GetUploadedBlobs()
+        public async Task<List<BlobDto>> GetUploadedBlogImages()
         {
-            BlobContainerClient container = new (azureConnectionString, containerName);
+            BlobContainerClient container = new(azureConnectionString, containerName);
             List<BlobDto> files = [];
             await foreach (BlobItem file in container.GetBlobsAsync())
             {
