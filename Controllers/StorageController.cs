@@ -14,7 +14,7 @@ namespace AzurBlobStorageAPI.Controllers
         }
 
         [HttpPost]
-        [Route("UploadBlobImage")]
+        [Route("UploadBlogImage")]
         public async Task<IActionResult> UploadBlogImage(IFormFile file)
         {
             var response = await _service.UploadBlogImage(file);
